@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>朋友的价值观MBTI：七宗罪×七美德</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <div class="page">
+    <!-- 页眉 -->
+    <header class="test-header">
+      <h1>朋友的价值观MBTI：七宗罪×七美德</h1>
+      <span class="badge" id="badgeLabel">-- 题 · 约 10 分钟</span>
+    </header>
+
+    <!-- 排序：你认为七宗罪罪孽程度的排序（第 1 步） -->
+    <section class="sort-ranking" id="sortRanking">
+      <p class="friend-hook" id="friendHook"></p>
+      <h3 id="sortTitle">在你看来，以下七宗罪的罪孽程度，邪恶程度，从大到小如何排序？</h3>
+      <ul class="sort-list" id="sortList"></ul>
+      <div class="sort-actions">
+        <div class="test-guidance">
+          <p id="guidanceText"></p>
+        </div>
+        <button type="button" class="btn-submit btn-start" id="btnStart">开始作答</button>
+      </div>
+    </section>
+
+    <!-- 进度条 -->
+    <div class="progress-wrap" id="progressWrap" style="display:none;">
+      <div class="progress-info">
+        <span id="progressLabel">已完成 0 / -- 题</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- 答题区 -->
+    <form id="testForm" style="display:none;">
+      <div id="questionsContainer"></div>
+      <div class="nav-wrap">
+        <button type="button" class="btn-nav" id="btnPrev">上一题</button>
+        <button type="button" class="btn-nav btn-next" id="btnNext">下一题</button>
+      </div>
+      <div class="submit-wrap" id="submitWrap">
+        <button type="button" class="btn-submit" id="btnSubmit">查看结果</button>
+        <p class="remaining-hint" id="remainingHint" style="color: var(--accent2);">全部作答完毕，点击查看你的七宗罪人格画像</p>
+      </div>
+    </form>
+
+    <footer>
+      <div class="sources">
+        <p id="footerNote">测试方法十分主观，请尽可能独立思考</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./assets/js/questions.js"></script>
+  <script src="./assets/js/texts-config.js"></script>
+  <script src="./assets/js/common.js"></script>
+  <script src="./assets/js/sortable-dom.js"></script>
+  <script src="./assets/js/index.js"></script>
+</body>
+</html>
