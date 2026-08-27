@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>你的七宗罪人格画像 · 价值观MBTI</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <div class="page">
+    <!-- 页眉 -->
+    <header class="test-header">
+      <h1>朋友的价值观MBTI：七宗罪×七美德</h1>
+      <span class="badge" id="badgeLabel">测试已完成</span>
+    </header>
+
+    <!-- 结果区（本页面即结果，常量 .results.show 使其可见） -->
+    <div class="results show" id="results">
+      <!-- 首屏"方法定位"卡 -->
+      <section class="intro-lead-card" id="introLeadCard"></section>
+
+      <!-- 折叠区：这套测试的逻辑 -->
+      <section class="logic-collapse" id="logicCollapse"></section>
+
+      <div class="results-header">
+        <h2 id="resultsTitle"></h2>
+        <p class="results-subheader" id="resultsSubheader"></p>
+      </div>
+
+      <!-- 雷达图 -->
+      <figure class="chart-figure">
+        <figcaption id="chartCaption">七宗罪倾向 · 七美德之光</figcaption>
+        <div id="chart-radar"></div>
+      </figure>
+
+      <!-- 倾向排名 -->
+      <div class="ranking-section">
+        <h3 id="rankTitle">七宗罪倾向排名</h3>
+        <ul class="rank-list" id="rankList"></ul>
+      </div>
+
+      <!-- 原罪解释 -->
+      <div class="origin-explanation">
+        <p id="originExplanationText"></p>
+      </div>
+
+      <!-- 逐项深度解读 -->
+      <div class="detail-section">
+        <h3 id="detailTitle">逐项深度解读</h3>
+        <div id="detailCards"></div>
+      </div>
+
+      <!-- 综合洞察 -->
+      <div class="insight-box" id="insightBox">
+        <h3 id="insightTitle">综合洞察</h3>
+        <p id="insightText"></p>
+      </div>
+
+      <!-- 善良认知（由 result.js 注入内容） -->
+      <div id="goodnessSection" class="goodness-section"></div>
+
+      
+
+      <!-- 二次排序：看完结果后重新排序 -->
+      <div class="second-ranking-section" id="secondRankingSection">
+        <h3 id="resortTitle">看完结果后，请再次对七宗罪的罪孽程度，邪恶程度排序。</h3>
+        <p class="hint" id="resortHint">你的认知可能在测试过程中发生了变化——重新排一次，看看是否和最初不同。</p>
+        <div class="second-ranking-layout">
+          <div class="second-ranking-main">
+            <ul class="sort-list" id="sortListFinal"></ul>
+          </div>
+          <div class="initial-ranking-sidebar">
+            <button class="toggle-initial-btn" id="toggleInitialRanking">查看我的初始排序</button>
+            <div class="initial-ranking-content" id="initialRankingContent" style="display: none;">
+              <h4>你的初始排序（不可修改）</h4>
+              <div id="initialRankList"></div>
+              <div class="ranking-change-summary" id="rankingChangeSummary" style="display: none;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 七宗罪得分排序与认知对比 -->
+      <div class="unforgivable-ranking" id="unforgivableRanking">
+        <h3 id="scoreRankTitle">你的七宗罪得分排序</h3>
+        <p class="hint" id="scoreRankHint">基于你的答题结果，你的七宗罪倾向得分从高到低排列如下。请将上方你重新选择的排序和初始排序，与这里的得分排序进行对比：</p>
+        <div id="unforgivableRankList"></div>
+        <div id="unforgivableRankCommentary" class="rank-commentary"></div>
+      </div>
+
+      <!-- 返回查看答案 -->
+      <div class="back-to-test-wrap" id="backToTestWrap">
+        <button class="btn-back-to-test" id="btnBackToTest">返回查看我的选择</button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="sources">
+        <p id="footerNote">测试方法十分主观，请尽可能独立思考</p>
+        <p><a href="index.html" style="color:var(--accent3);text-decoration:underline;" id="restartLink">重新开始一轮测试</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./assets/js/questions.js"></script>
+  <script src="./assets/js/scoring.js"></script>
+  <script src="./assets/js/result-texts.js"></script>
+  <script src="./assets/js/interpretations.js"></script>
+  <script src="./assets/lib/echarts.min.js"></script>
+  <script src="./assets/js/common.js"></script>
+  <script src="./assets/js/sortable-dom.js"></script>
+  <script src="./assets/js/charts.js"></script>
+  <script src="./assets/js/result.js"></script>
+</body>
+</html>

@@ -1,0 +1,1244 @@
+﻿/* === Theme CSS variables === */
+    :root {
+      --bg: #fbf8f1;
+    --bg2: #f5efe3;
+    --bg3: #ffffff;
+    --ink: #2a2119;
+    --ink2: #42382c;
+    --muted: #8f7f6a;
+    --rule: #e0d3ba;
+    --accent: #c0392b;
+    --accent2: #27ae60;
+    --accent3: #c8a84e;
+    --card-shadow: 0 4px 14px rgba(80, 60, 30, 0.10);
+    --card-grad: linear-gradient(180deg, #fdf4e3 0%, #f4e2c2 100%);
+    --card-grad-soft: linear-gradient(180deg, #fdf6e9 0%, #f9ecd4 100%);
+    --card-grad-red: linear-gradient(180deg, #fff3ee 0%, #f7d8cc 100%);
+    --card-border: #e4cf9e;
+      --font: 'Microsoft YaHei', 'PingFang SC', 'Noto Sans CJK SC', 'WenQuanYi Micro Hei', sans-serif;
+      --font-mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+      --max: 1040px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 20.8px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+      padding: 0;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* === Page wrapper === */
+    .page {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    /* === Header === */
+    .test-header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 2rem;
+    }
+    .test-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .test-header .subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .test-header .badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.3rem 1rem;
+      font-size: 0.8rem;
+      color: var(--accent3);
+      border: 1px solid var(--accent3);
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    /* === Intro section === */
+    .intro {
+      background: var(--card-grad-soft);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--accent3);
+      box-shadow: var(--card-shadow);
+    }
+    .intro p {
+      color: var(--ink);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .intro .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* === 首屏"方法定位"卡 === */
+    .intro-lead-card {
+      background: var(--card-grad-soft);
+      border-radius: 14px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      box-shadow: var(--card-shadow);
+    }
+    .intro-lead-card .intro-lead-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 1rem 0;
+    }
+    .intro-lead-card .intro-lead-body p {
+      color: var(--ink);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin: 0;
+    }
+    .intro-lead-card .intro-lead-body span[style] {
+      color: #c0392b !important;
+      font-weight: 600;
+    }
+
+    /* === 折叠区"这套测试的逻辑" === */
+    .logic-collapse {
+      margin-bottom: 2rem;
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: var(--card-shadow);
+    }
+    .logic-master-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 0 0 1rem 0;
+    }
+    .logic-toggle {
+      width: 100%;
+      text-align: left;
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--card-shadow);
+    }
+    .logic-toggle:hover {
+      background: var(--card-grad);
+      border-color: var(--accent3);
+    }
+    .logic-toggle .logic-arrow {
+      font-size: 0.8rem;
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+    }
+    .logic-content {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1.5rem 1rem;
+      background: var(--card-grad-soft);
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--card-shadow);
+    }
+    .logic-section {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .logic-section:last-child {
+      border-bottom: none;
+    }
+    .logic-section h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 0.6rem 0;
+    }
+    .logic-section p {
+      color: var(--ink);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      margin: 0 0 0.6rem 0;
+    }
+    .logic-section p:last-child {
+      margin-bottom: 0;
+    }
+    .logic-section span[style*="color:#4a5563"] {
+      color: #4a5563;
+    }
+    /* 折叠区内的三个分组块（罪恶/美德/自检） */
+    .logic-group + .logic-group {
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--rule);
+    }
+    .logic-group-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin: 0 0 0.4rem 0;
+    }
+
+    /* === 结果页副标题 === */
+    .results-subheader {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* === 答题引导提示 === */
+    .test-guidance {
+      background: linear-gradient(135deg, #f9e9c4 0%, #eecf9c 100%);
+      border: 1.5px solid #c99a45;
+      border-radius: 8px;
+      padding: 1.1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--card-shadow);
+    }
+    .test-guidance p {
+      color: #3a2f18;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.9;
+      margin: 0;
+    }
+
+    /* === Sin ranking (drag-and-drop) === */
+    .sort-ranking {
+      margin-bottom: 2rem;
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+    }
+    .sort-ranking h3 {
+      font-size: 0.95rem;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    .sort-ranking .hint {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .sort-ranking .friend-hook {
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px dashed var(--rule);
+    }
+    .sort-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      user-select: none;
+      position: relative; /* 被拖项离流后以此为定位基准 */
+    }
+    .sort-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.65rem 0.8rem;
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      cursor: grab;
+      transition: background 0.15s, border-color 0.15s;
+      touch-action: none; /* 允许触摸拖动不被页面滚动抢走 */
+    }
+    .sort-item:active { cursor: grabbing; }
+    .sort-item:hover { border-color: var(--accent3); }
+    /* 被拖项：脱离文档流跟随指针，抬起感与强调边框 */
+    .sort-item.sorting {
+      cursor: grabbing;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+      border-style: dashed;
+      border-color: var(--accent2);
+      background: var(--bg);
+      transition: none;
+    }
+    /* 占位符：与原项等高，仅占位不显示 */
+    .sort-item.sort-placeholder {
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .sort-handle {
+      color: var(--muted);
+      font-size: 1.1rem;
+      cursor: grab;
+      flex-shrink: 0;
+    }
+    .sort-rank {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .sort-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--ink);
+      flex: 1;
+    }
+    /* === True ranking (results) === */
+    .true-ranking {
+      margin: 2rem 0;
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      box-shadow: var(--card-shadow);
+    }
+    .true-ranking h3 {
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+    .true-ranking-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      padding: 0.6rem 0.8rem;
+      background: var(--card-grad-soft);
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent3);
+      font-style: italic;
+    }
+    .true-ranking-columns {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .true-ranking-col {
+      flex: 1;
+      min-width: 0;
+    }
+    .true-ranking-col h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+    }
+    .true-rank-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .true-rank-row:last-child { border-bottom: none; }
+    .true-rank-num {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--muted);
+      width: 22px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .true-rank-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .true-rank-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      flex: 1;
+    }
+    .true-rank-match {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .true-rank-match.same { background: #eafaf1; color: var(--accent2); }
+    .true-rank-match.diff { background: #fdf2f2; color: var(--accent); }
+
+    /* === Second ranking (post-test) === */
+    .second-ranking-section {
+      margin: 2rem 0;
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      box-shadow: var(--card-shadow);
+    }
+    .second-ranking-section h3 {
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+    .second-ranking-section .hint {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .second-ranking-layout {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    .second-ranking-main {
+      flex: 1;
+      min-width: 0;
+    }
+    .initial-ranking-sidebar {
+      flex-shrink: 0;
+      width: 280px;
+    }
+    .toggle-initial-btn {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--ink);
+      font-weight: 600;
+      transition: all 0.2s;
+      margin-bottom: 0.6rem;
+    }
+    .toggle-initial-btn:hover {
+      background: var(--accent3);
+      color: #fff;
+    }
+    .initial-ranking-content {
+      display: none;
+      background: var(--card-grad-soft);
+      border-radius: 8px;
+      padding: 1rem;
+      border: 1px solid var(--card-border);
+    }
+    .initial-ranking-content h4 {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .initial-ranking-content .true-rank-row {
+      padding: 0.35rem 0;
+    }
+    .ranking-change-summary {
+      margin-top: 1rem;
+      padding: 0.8rem 1rem;
+      background: linear-gradient(180deg, #ffe7bd 0%, #f3c27e 100%);
+      border: 1px solid #d9a44f;
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--ink);
+      line-height: 1.7;
+      box-shadow: 0 2px 6px rgba(80, 60, 30, 0.10);
+      display: none;
+    }
+    @media (max-width: 600px) {
+      .second-ranking-layout {
+        flex-direction: column;
+      }
+      .initial-ranking-sidebar {
+        width: 100%;
+      }
+    }
+
+    /* === Unforgivable ranking === */
+    .unforgivable-ranking {
+      margin: 2rem 0;
+      background: var(--card-grad-red);
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      box-shadow: var(--card-shadow);
+    }
+    .unforgivable-ranking h3 {
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+    .unforgivable-ranking .hint {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    
+
+    @media (max-width: 600px) {
+      .true-ranking-columns {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* === Progress bar === */
+    .progress-wrap {
+      margin-bottom: 2rem;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      padding: 1rem 0;
+      z-index: 10;
+    }
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: var(--rule);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent2), var(--accent3));
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    /* === Question cards === */
+    .dimension-section {
+      margin-bottom: 2.5rem;
+    }
+    .dimension-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--rule);
+    }
+    .dimension-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .dimension-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .question-card {
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 0.8rem;
+      box-shadow: var(--card-shadow);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .question-card:hover {
+      border-color: var(--accent3);
+    }
+    .question-card.answered {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 1px rgba(39, 174, 96, 0.15);
+    }
+    .question-text {
+      font-size: 1.235rem; /* 0.95 × 1.3 */
+      color: var(--ink);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .question-number {
+      color: var(--muted);
+      font-size: 1.04rem; /* 0.8 × 1.3 */
+      margin-right: 0.4rem;
+    }
+    .question-icon {
+      margin-right: 0.3rem;
+      font-size: 1.1rem;
+      vertical-align: middle;
+    }
+
+    /* === Likert scale === */
+    .scale {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+    .scale-label-left, .scale-label-right {
+      font-size: 1.5rem; /* 1.15 × 1.3 */
+      font-weight: 700;
+      color: var(--ink);
+      flex-shrink: 0;
+    }
+    .option-subtitle {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.105rem; /* 0.85 × 1.3 */
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    .option-subtitle-item {
+      padding-left: 0.2rem;
+    }
+    .scale-options {
+      display: flex;
+      gap: 0.3rem;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+    }
+    .scale-circle {
+      border-radius: 50%;
+      border: 2.5px solid var(--circle-color, #ccc);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .scale-circle:hover {
+      transform: scale(1.15);
+      border-width: 3px;
+    }
+    .scale-circle.selected {
+      background: var(--circle-color, #ccc);
+      border-color: var(--ink);
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.12);
+      transform: scale(1.2);
+    }
+
+    /* === 不计分二选一题（choice） === */
+    .no-score-tag {
+      display: inline-block;
+      background: #fdeaca;
+      color: #b45309;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.05rem 0.45rem;
+      border-radius: 999px;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+    .choice-options {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.6rem;
+    }
+    .choice-btn {
+      flex: 1;
+      padding: 0.7rem 0.5rem;
+      border: 2px solid #e5d9c3;
+      border-radius: 0.6rem;
+      background: #faf5ea;
+      color: var(--ink);
+      font-size: 1.235rem; /* 0.95 × 1.3 */
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .choice-btn:hover {
+      border-color: #c0392b;
+    }
+    .choice-btn.selected {
+      background: #c0392b;
+      border-color: #c0392b;
+      color: #fff;
+    }
+    /* 中间圆圈（灰色=中立）选中时用深灰色填充，与浅灰边框形成区分 */
+    .scale-circle[data-v="0"].selected {
+      background: hsl(0, 0%, 40%);
+    }
+
+    /* === Submit button === */
+    .submit-wrap {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .btn-submit {
+      padding: 0.8rem 3rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent2), #2ecc71);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: all 0.3s;
+      box-shadow: 0 4px 14px rgba(39, 174, 96, 0.3);
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+    }
+    .btn-submit:disabled {
+      background: var(--rule);
+      color: var(--muted);
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+    .btn-submit:disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .remaining-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    /* === 一题一页：单题页与导航 === */
+    .question-page {
+      margin-bottom: 1rem;
+    }
+    .question-page .dimension-header {
+      margin-top: 0.25rem;
+    }
+    .sort-actions {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .sort-actions .test-guidance {
+      text-align: left;
+    }
+    .btn-start {
+      padding: 0.8rem 3.5rem;
+      font-size: 1.05rem;
+    }
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .btn-nav {
+      padding: 0.7rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      background: #fff;
+      border: 2px solid var(--rule);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .btn-nav:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .btn-nav:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    /* 下一题用主色渐变按钮，突出前进动作 */
+    .btn-nav.btn-next {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent2), #2ecc71);
+      border: none;
+      box-shadow: 0 4px 14px rgba(39, 174, 96, 0.3);
+    }
+    .btn-nav.btn-next:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+    }
+    .btn-nav.btn-next:disabled {
+      background: var(--rule);
+      color: var(--muted);
+      box-shadow: none;
+    }
+
+    /* === Results section === */
+    .results {
+      display: none;
+    }
+    .results.show {
+      display: block;
+    }
+    .results-header {
+      text-align: center;
+      padding: 2rem 0 1.5rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 2rem;
+    }
+    .results-header h2 {
+      font-size: 1.8rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .results-header .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* === Methodology note (results) === */
+    .methodology-note {
+      background: #fdf8f0;
+      border: 1px solid var(--accent3);
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--accent3);
+    }
+    .methodology-note p {
+      font-size: 0.9rem;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+    .methodology-note strong {
+      color: var(--accent);
+    }
+
+    /* === Radar chart === */
+    .chart-figure {
+      margin: 2rem 0;
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+    }
+    .chart-figure figcaption {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    #chart-radar {
+      width: 100%;
+      min-height: 32rem;
+    }
+
+    /* === Sin ranking === */
+    .ranking-section {
+      margin: 2rem 0;
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      box-shadow: var(--card-shadow);
+    }
+    .ranking-section h3 {
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+    .origin-explanation {
+      font-size: 0.95rem;
+      color: var(--ink2);
+      line-height: 1.9;
+      margin-bottom: 1.8rem;
+      padding: 1.2rem 1.4rem;
+      background: var(--card-grad-soft);
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      box-shadow: var(--card-shadow);
+    }
+    .origin-explanation .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .rank-list {
+      list-style: none;
+      padding: 0;
+    }
+    .rank-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(180deg, #fffdfa 0%, #fbf3e2 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(80, 60, 30, 0.06);
+      transition: transform 0.2s;
+    }
+    .rank-item:hover {
+      transform: translateX(4px);
+    }
+    .rank-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .rank-info {
+      flex: 1;
+    }
+    .rank-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+    .rank-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .rank-bar-wrap {
+      width: 120px;
+      height: 8px;
+      background: var(--rule);
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .rank-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+    .rank-score {
+      font-weight: 700;
+      font-size: 0.9rem;
+      width: 40px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* === Detail analysis === */
+    .detail-section {
+      margin: 2.5rem 0;
+    }
+    .detail-section h3 {
+      font-size: 1.3rem;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .detail-card {
+      background: var(--card-grad-soft);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--card-shadow);
+    }
+    .detail-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .detail-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .detail-card-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .detail-card-level {
+      margin-left: auto;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .detail-card-body {
+      font-size: 0.9rem;
+      color: var(--ink);
+      line-height: 1.8;
+      padding-left: 2.8rem;
+    }
+    .detail-card-body .philosophy {
+      margin-top: 0.8rem;
+      padding: 1rem 1.2rem;
+      background: var(--card-grad-soft);
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      box-shadow: var(--card-shadow);
+      font-size: 0.95rem;
+      color: var(--ink2);
+    }
+    .detail-card-body .philosophy strong {
+      color: var(--ink);
+    }
+
+    /* === Overall insight === */
+    .insight-box {
+      background: var(--card-grad);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+    }
+    .insight-box h3 {
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .insight-box p {
+      font-size: 0.95rem;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    .btn-retake {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.6rem 2rem;
+      font-size: 0.9rem;
+      color: var(--accent2);
+      border: 2px solid var(--accent2);
+      border-radius: 20px;
+      cursor: pointer;
+      background: transparent;
+      font-weight: 600;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .btn-retake:hover {
+      background: var(--accent2);
+      color: #fff;
+    }
+
+    /* === Back to test button === */
+    .back-to-test-wrap {
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+    .btn-back-to-test {
+      display: inline-block;
+      padding: 0.7rem 2.5rem;
+      font-size: 0.95rem;
+      color: var(--accent3);
+      border: 2px solid var(--accent3);
+      border-radius: 24px;
+      cursor: pointer;
+      background: transparent;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+    }
+    .btn-back-to-test:hover {
+      background: var(--accent3);
+      color: #fff;
+    }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      border-top: 1px solid var(--rule);
+      margin-top: 3rem;
+    }
+
+    /* === Goodness section (results) === */
+    .goodness-section {
+      margin: 2rem 0;
+    }
+    .goodness-card {
+      background: var(--card-grad-soft);
+      border: 2px solid var(--accent3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+    .goodness-card::before {
+      content: '独立维度';
+      position: absolute;
+      top: -12px;
+      left: 1.5rem;
+      background: var(--accent3);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.8rem;
+      border-radius: 10px;
+      letter-spacing: 0.05em;
+    }
+    .goodness-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .goodness-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .goodness-title-wrap {
+      flex: 1;
+    }
+    .goodness-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      display: block;
+    }
+    .goodness-score {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .goodness-level {
+      font-size: 0.8rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .goodness-body {
+      font-size: 0.9rem;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+    .goodness-score-note {
+      margin-top: 0.8rem;
+      padding: 0.9rem 1rem;
+      background: var(--card-grad-soft);
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      border-left: 3px solid var(--accent);
+      color: var(--ink2);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* === Footer === */
+    footer .sources {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    footer .sources a {
+      color: var(--accent3);
+      text-decoration: none;
+    }
+    footer .sources a:hover {
+      text-decoration: underline;
+    }
+
+    /* === UI polish：统一卡片层次与交互反馈 === */
+    .question-card, .rank-item, .detail-card, .chart-figure, .goodness-card {
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .question-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(44, 36, 22, 0.10);
+    }
+    .rank-item:hover {
+      transform: translateX(4px);
+      box-shadow: 0 8px 22px rgba(44, 36, 22, 0.08);
+    }
+    .detail-card:hover, .chart-figure:hover, .goodness-card:hover {
+      border-color: var(--accent3);
+      box-shadow: 0 8px 22px rgba(44, 36, 22, 0.07);
+    }
+    /* 按钮按压反馈 */
+    .btn-submit:active, .btn-nav:active { transform: translateY(0) scale(0.98); }
+    .choice-btn:active, .toggle-initial-btn:active, .btn-retake:active, .btn-back-to-test:active { transform: scale(0.98); }
+    /* 键盘焦点明确可见（无障碍） */
+    .btn-submit:focus-visible, .btn-nav:focus-visible, .btn-start:focus-visible,
+    .choice-btn:focus-visible, .btn-retake:focus-visible, .btn-back-to-test:focus-visible,
+    .toggle-initial-btn:focus-visible, .sort-item:focus-visible {
+      outline: 3px solid rgba(192, 57, 43, 0.45);
+      outline-offset: 2px;
+    }
+    /* 尊重系统的减弱动效偏好 */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+      .question-card:hover, .rank-item:hover { transform: none !important; box-shadow: none !important; }
+    }
+
+    /* === Responsive === */
+    @media (max-width: 600px) {
+      .page { padding: 1rem 0.8rem 2rem; }
+      .test-header h1 { font-size: 1.5rem; }
+      .scale-circle { width: 44px; height: 44px; }
+      .question-card { padding: 1rem; }
+      .rank-bar-wrap { width: 80px; }
+      #chart-radar { min-height: 320px; }
+    }
+
+    /* === Print === */
+    @media print {
+      .scale-circle, .btn-submit, .btn-retake, .progress-wrap { display: none; }
+      .results { display: block !important; }
+      .question-card { break-inside: avoid; }
+    }
