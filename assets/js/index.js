@@ -126,16 +126,18 @@
       '</div>' +
       '<div class="scale">' +
         '<span class="scale-label-left">A</span>' +
-        '<div class="scale-options">' +
+        '<div class="scale-options" role="radiogroup">' +
           (function () {
             var values = [-3, -2, -1, 0, 1, 2, 3];
             return values.map(function (v, i) {
-              var size = 38 + Math.abs(i - 3) * 6; // 圈尺寸继续放大
+              // 圈尺寸：中间最小、两端最大的节奏感；基准 44px 起，保证 ≥44px 触控目标。
+              // 通过 CSS 变量 --circle-size 供样式层控制，移动端媒体查询可统一覆盖，避免内联 px 无法响应。
+              var size = 44 + Math.abs(i - 3) * 5;
               var color;
               if (v < 0) color = 'hsl(145, 63%, ' + (50 - Math.abs(v) * 6) + '%)';
               else if (v === 0) color = 'hsl(0, 0%, 74%)';
               else color = 'hsl(282, 39%, ' + (50 - v * 6) + '%)';
-              return '<div class="scale-circle" data-q="' + q.id + '" data-v="' + v + '" style="width:' + size + 'px;height:' + size + 'px;--circle-color:' + color + ';"></div>';
+              return '<div class="scale-circle" data-q="' + q.id + '" data-v="' + v + '" tabindex="0" role="radio" aria-checked="false" style="--circle-size:' + size + 'px;--circle-color:' + color + ';"></div>';
             }).join('');
           })() +
         '</div>' +
@@ -233,20 +235,45 @@
     });
   }
 
-  // 量表圆圈选择
+  // 量表圆圈选择：点击 / 键盘（Enter·空格选中，方向键在相邻选项间移动）
+  function selectScaleCircle(circle) {
+    var qId = circle.dataset.q;
+    var value = parseInt(circle.dataset.v, 10);
+    var group = circle.parentElement;
+    group.querySelectorAll('.scale-circle').forEach(function (s) {
+      s.classList.remove('selected');
+      s.setAttribute('aria-checked', 'false');
+    });
+    circle.classList.add('selected');
+    circle.setAttribute('aria-checked', 'true');
+    var card = document.getElementById(defaultCardId(qId));
+    if (card) card.classList.add('answered');
+    answers[qId] = value;
+    allQuestions.forEach(function (q) { if (q.id === qId) { q.answered = true; q.value = value; } });
+    updateRemainingHint();
+    updateButtons();
+    autoAdvance();
+  }
+
   document.querySelectorAll('.scale-circle').forEach(function (circle) {
     circle.addEventListener('click', function () {
-      var qId = this.dataset.q;
-      var value = parseInt(this.dataset.v, 10);
-      this.parentElement.querySelectorAll('.scale-circle').forEach(function (s) { s.classList.remove('selected'); });
-      this.classList.add('selected');
-      var card = document.getElementById(defaultCardId(qId));
-      if (card) card.classList.add('answered');
-      answers[qId] = value;
-      allQuestions.forEach(function (q) { if (q.id === qId) { q.answered = true; q.value = value; } });
-      updateRemainingHint();
-      updateButtons();
-      autoAdvance();
+      selectScaleCircle(this);
+    });
+    // 键盘可达性：radio 语义 + 方向键在选项间移动焦点（Enter/空格才确认选中，避免误触自动跳题）
+    circle.addEventListener('keydown', function (e) {
+      var key = e.key;
+      if (key === 'Enter' || key === ' ') {
+        e.preventDefault();
+        selectScaleCircle(this);
+      } else if (key === 'ArrowLeft' || key === 'ArrowUp') {
+        e.preventDefault();
+        var prev = this.previousElementSibling;
+        if (prev && prev.classList.contains('scale-circle')) prev.focus();
+      } else if (key === 'ArrowRight' || key === 'ArrowDown') {
+        e.preventDefault();
+        var next = this.nextElementSibling;
+        if (next && next.classList.contains('scale-circle')) next.focus();
+      }
     });
   });
 
@@ -335,7 +362,10 @@
         if (card) {
           card.classList.add('answered');
           var circle = card.querySelector('.scale-circle[data-v="' + v + '"]');
-          if (circle) circle.classList.add('selected');
+          if (circle) {
+            circle.classList.add('selected');
+            circle.setAttribute('aria-checked', 'true');
+          }
         }
       }
     });

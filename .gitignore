@@ -1,0 +1,18 @@
+# === 敏感凭据：一律禁止提交 ===
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+project.private.config.json
+.env
+.env.*
+*.local.json
+
+# === 常规忽略 ===
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db

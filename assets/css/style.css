@@ -10,7 +10,7 @@
     --accent: #c0392b;
     --accent2: #27ae60;
     --accent3: #c8a84e;
-    --card-shadow: 0 4px 14px rgba(80, 60, 30, 0.10);
+    --card-shadow: 0 2px 6px rgba(80, 60, 30, 0.06), 0 10px 26px rgba(80, 60, 30, 0.08);
     --card-grad: linear-gradient(180deg, #fdf4e3 0%, #f4e2c2 100%);
     --card-grad-soft: linear-gradient(180deg, #fdf6e9 0%, #f9ecd4 100%);
     --card-grad-red: linear-gradient(180deg, #fff3ee 0%, #f7d8cc 100%);
@@ -43,10 +43,22 @@
 
     /* === Header === */
     .test-header {
+      position: relative;
       text-align: center;
-      padding: 3rem 0 2rem;
+      padding: 3.2rem 0 2.4rem;
       border-bottom: 1px solid var(--rule);
       margin-bottom: 2rem;
+      background: radial-gradient(ellipse 75% 130% at 50% -20%, rgba(200, 168, 78, 0.18), transparent 70%);
+    }
+    /* 页眉装饰分隔线：柔和的鎏金短横线，强化中世纪/羊皮纸质感 */
+    .test-header::after {
+      content: '';
+      display: block;
+      width: 96px;
+      height: 3px;
+      margin: 1.5rem auto 0;
+      border-radius: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent3), transparent);
     }
     .test-header h1 {
       font-size: 2.2rem;
@@ -263,18 +275,18 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.6rem;
       user-select: none;
       position: relative; /* 被拖项离流后以此为定位基准 */
     }
     .sort-item {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.65rem 0.8rem;
+      gap: 0.75rem;
+      padding: 0.8rem 1rem;
       background: var(--card-grad-soft);
       border: 1px solid var(--card-border);
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: grab;
       transition: background 0.15s, border-color 0.15s;
       touch-action: none; /* 允许触摸拖动不被页面滚动抢走 */
@@ -302,14 +314,14 @@
       flex-shrink: 0;
     }
     .sort-rank {
-      width: 26px;
-      height: 26px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #fff;
       flex-shrink: 0;
     }
@@ -520,6 +532,7 @@
       background: var(--bg);
       padding: 1rem 0;
       z-index: 10;
+      box-shadow: 0 3px 10px rgba(80, 60, 30, 0.04);
     }
     .progress-info {
       display: flex;
@@ -530,16 +543,17 @@
     }
     .progress-bar {
       width: 100%;
-      height: 6px;
+      height: 8px;
       background: var(--rule);
-      border-radius: 3px;
+      border-radius: 4px;
       overflow: hidden;
     }
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--accent2), var(--accent3));
-      border-radius: 3px;
-      transition: width 0.3s ease;
+      background: linear-gradient(90deg, var(--accent2), #2ecc71 55%, var(--accent3));
+      border-radius: 4px;
+      transition: width 0.35s ease;
+      box-shadow: 0 0 10px rgba(39, 174, 96, 0.35);
     }
 
     /* === Question cards === */
@@ -573,9 +587,9 @@
     .question-card {
       background: var(--card-grad-soft);
       border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 1.2rem 1.5rem;
-      margin-bottom: 0.8rem;
+      border-radius: 12px;
+      padding: 1.5rem 1.7rem;
+      margin-bottom: 1rem;
       box-shadow: var(--card-shadow);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
@@ -589,7 +603,7 @@
     .question-text {
       font-size: 1.235rem; /* 0.95 × 1.3 */
       color: var(--ink);
-      margin-bottom: 1rem;
+      margin-bottom: 1.4rem;
       line-height: 1.6;
     }
     .question-number {
@@ -608,7 +622,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.5rem;
       flex-wrap: wrap;
     }
     .scale-label-left, .scale-label-right {
@@ -620,8 +634,8 @@
     .option-subtitle {
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
-      margin-bottom: 1.2rem;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
       font-size: 1.105rem; /* 0.85 × 1.3 */
       color: var(--ink);
       line-height: 1.45;
@@ -631,12 +645,18 @@
     }
     .scale-options {
       display: flex;
-      gap: 0.3rem;
+      gap: 0.5rem;
       flex: 1;
       justify-content: center;
       align-items: center;
     }
+    /* 圆圈尺寸由 JS 以内联 --circle-size 提供，便于移动端媒体查询统一覆盖 */
     .scale-circle {
+      width: var(--circle-size, 46px);
+      height: var(--circle-size, 46px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 50%;
       border: 2.5px solid var(--circle-color, #ccc);
       background: transparent;
@@ -645,14 +665,26 @@
       flex-shrink: 0;
     }
     .scale-circle:hover {
-      transform: scale(1.15);
+      transform: scale(1.12);
       border-width: 3px;
+    }
+    .scale-circle:focus-visible {
+      outline: 3px solid rgba(192, 57, 43, 0.5);
+      outline-offset: 2px;
     }
     .scale-circle.selected {
       background: var(--circle-color, #ccc);
       border-color: var(--ink);
-      box-shadow: 0 0 0 3px rgba(0,0,0,0.12);
-      transform: scale(1.2);
+      box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.15);
+      transform: scale(1.12);
+    }
+    /* 选中对勾：明确"已选择"反馈 */
+    .scale-circle.selected::after {
+      content: '✓';
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      line-height: 1;
     }
 
     /* === 不计分二选一题（choice） === */
@@ -669,20 +701,21 @@
     }
     .choice-options {
       display: flex;
-      gap: 0.6rem;
-      margin-top: 0.6rem;
+      gap: 0.85rem;
+      margin-top: 1.1rem;
     }
     .choice-btn {
       flex: 1;
-      padding: 0.7rem 0.5rem;
+      padding: 0.9rem 0.6rem;
       border: 2px solid #e5d9c3;
-      border-radius: 0.6rem;
-      background: #faf5ea;
+      border-radius: 0.8rem;
+      background: linear-gradient(180deg, #fdf6e9, #f6ead0);
       color: var(--ink);
       font-size: 1.235rem; /* 0.95 × 1.3 */
       cursor: pointer;
       transition: all 0.2s ease;
       text-align: center;
+      box-shadow: 0 2px 6px rgba(80, 60, 30, 0.06);
     }
     .choice-btn:hover {
       border-color: #c0392b;
@@ -739,6 +772,12 @@
     /* === 一题一页：单题页与导航 === */
     .question-page {
       margin-bottom: 1rem;
+      animation: fadeSlide 0.28s ease;
+    }
+    /* 换题时的轻柔淡入上滑（系统减弱动效偏好会在全局媒体查询中关闭） */
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
     }
     .question-page .dimension-header {
       margin-top: 0.25rem;
@@ -766,7 +805,7 @@
       font-size: 1rem;
       font-weight: 600;
       color: var(--ink);
-      background: #fff;
+      background: linear-gradient(180deg, #fffdf7, #f7efe0);
       border: 2px solid var(--rule);
       border-radius: 30px;
       cursor: pointer;
@@ -1229,9 +1268,14 @@
     /* === Responsive === */
     @media (max-width: 600px) {
       .page { padding: 1rem 0.8rem 2rem; }
+      .test-header { padding: 2.2rem 0 1.8rem; }
       .test-header h1 { font-size: 1.5rem; }
-      .scale-circle { width: 44px; height: 44px; }
-      .question-card { padding: 1rem; }
+      /* 移动端圆圈统一为更紧凑的尺寸（覆盖 JS 内联的桌面端节奏），并允许换行避免横向溢出 */
+      .scale-circle { --circle-size: 40px; }
+      .scale { gap: 0.35rem; }
+      .scale-options { gap: 0.35rem; flex-wrap: wrap; }
+      .scale-label-left, .scale-label-right { font-size: 1.05rem; }
+      .question-card { padding: 1.2rem 1rem; }
       .rank-bar-wrap { width: 80px; }
       #chart-radar { min-height: 320px; }
     }
